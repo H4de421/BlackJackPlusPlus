@@ -7,16 +7,13 @@ Card::Card(int value, Color color)
   this->color = color;
 }
 
-
-// Value methodes
-Value::Value(int v)
+Value operator+(Value v1, const Card& c2)
 {
-  this->first = v;
-  this->second = (v-10 > 0 ? v-10 : 0);
-  if (v==21)
-  {
-    this->second = 0;
-  }
+  return v1 + c2.value;
+}
 
+Value operator+(const Card& c1, const Card& c2)
+{
+  return c1.value + c2.value;
 }
 

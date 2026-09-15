@@ -1,21 +1,11 @@
 #pragma once
-
+#include "Value.hh"
 // color of cards
 enum Color {
   HEART,
   CLUB,
   DIAMOND,
   SPADE
-};
-
-// class value
-// used to handle multiples value a one/a set of card(s) (manly due to As)
-class Value{
-public:
-  int first;
-  int second;
-  
-  Value(int v);
 };
 
 // class Card
@@ -28,4 +18,6 @@ public:
   Card(int value, Color color);
 };
 
+Value operator+(Value v1, const Card& c2);
+Value operator+(const Card& c1, const Card& c2);
 
