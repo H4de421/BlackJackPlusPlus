@@ -1,5 +1,7 @@
 cmake_minimum_required(VERSION 3.21.2)
 
+enable_testing()
+
 project(BlackJack)
 
 add_executable(BlackJack)
@@ -23,3 +25,4 @@ add_subdirectory(src)
 #target_include_directories(BlackJack PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/include/")
 target_include_directories(BlackJack PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/src/")
 
+add_subdirectory(tests)
