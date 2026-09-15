@@ -10,7 +10,6 @@ Deck::Deck()
     {
       this->cards.push_back(Card(number,static_cast<Color>(color)));
     }
-    
   }
 }
 

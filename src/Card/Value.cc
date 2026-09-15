@@ -5,7 +5,7 @@ Value::Value(int v, int v2)
 {
   this->first = v;
   this->second = v2;
-  this->overflow = false;
+  this->overflow = v>21;
 }
 
 Value::Value(int v)
@@ -26,15 +26,16 @@ Value::Value(int v)
 
 Value operator+(const Value& v1, const Value& v2)
 {
-  if (v1.overflow || v2.overflow)
+  if (v1.overflow)
   {
-    int res;
-    if(v1.overflow)
+    int res = v1.first;
+    if (v2.second != 0)
     {
-      res = v1.first + std::min(v2.first, v2.second);
+      res += std::min(v2.first, v2.second); 
     }
-    else {
-      res = v2.first + std::min(v1.first, v1.second);
+    else 
+    {
+      res += v2.first;
     }
     return Value(res,0);
   }
@@ -56,6 +57,15 @@ Value operator+(const Value& v1, const Value& v2)
     if (v1.second != 0)
     {
       second += v2.first;
+    }
+  }
+  // overflow check
+  if (first > 21)
+  {
+    if (second != 0)
+    {
+      first = second;
+        second = 0;
     }
   }
   return Value(first, second);
